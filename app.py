@@ -82,8 +82,6 @@ def index():
                         db.session.add(new_player)
                         db.session.commit()
                        
-
-                print("\n")
     
     return render_template('index.html', errors=errors)
 
@@ -92,7 +90,13 @@ def index():
 def details():
     if request.method == 'POST':
         query = request.form['query']
+
+        if not query.isdigit():  
+            team = Teams.query.filter_by(name = query).first()
+            query = team.id
+        
         players = Player.query.filter_by(team_id = query)
+
         return render_template('details.html', playerslist = players)
     return render_template('details.html')
 
