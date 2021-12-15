@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Players Information of a Team</title>
+</head>
+<body>
+    <form action="/details/" method="post">
+        <input type="text" name="query" id="query">
+        <input type="submit" value="Submit">
+    </form>
+
+    <table>
+        <tr>
+            <th>Name</th>
+            <th>Famous For</th>
+            <th>Age</th>
+        </tr>
+        {% for player in  playerslist%}
+        <tr>
+            <td>{{ player.name }}</td>
+            <td>{{ player.famous }}</td>
+            <td>{{ player.age }}</td>
+        </tr>
+            
+        {% endfor %}
+    </table>
+    
+</body>
+</html>
